@@ -1,0 +1,22 @@
+service: quarkus-lambda
+
+frameworkVersion: ">=1.41.1"
+
+provider:
+  name: aws
+  runtime: provided
+  stage: dev
+  region: us-west-2
+  tracing:
+    lambda: true
+
+package:
+  artifact: build/distributions/quarkus-lambda-1.0-SNAPSHOT.zip
+
+functions:
+  echo:
+    handler: notusedinnativemode
+    events:
+      - http:
+          method: post
+          path: echo
